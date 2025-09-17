@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "PIXNET Ad Blocker",
+  "version": "1.0",
+  "description": "移除痞客邦常見廣告（DOM + 網路攔截）",
+  "permissions": ["declarativeNetRequest", "declarativeNetRequestWithHostAccess", "scripting"],
+  "host_permissions": ["*://*.pixnet.net/*"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "block_ads",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.pixnet.net/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
